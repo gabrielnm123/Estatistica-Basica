@@ -2,15 +2,15 @@ import pandas as pd
 from math import floor
 
 class TabelaPb():
-    def __init__(self, tab: pd.DataFrame) -> None:
-        self.tab = tab.copy()
+    def __init__(self, type: int, *args, **kwargs) -> None:
+        if type == 1:
+            self.tab = pd.read_excel(*args, **kwargs)
+        else:
+            self.tab = None    
         if 'Anos' in self.tab.columns and 'Meses' in self.tab.columns:
             self.tab['Idade'] = self.tab['Anos'] + self.tab['Meses'] / 12
-            colunas = self.tab.columns.to_list()
-            colunas.insert(colunas.index('Anos'), colunas.pop())
-            colunas.remove('Anos')
-            colunas.remove('Meses')
-            self.tab = self.tab[colunas]
+            self.tab = self.tab.round({'Idade': 2})
+            self.tab.drop(['Anos', 'Meses'], axis=1, inplace=True)
 
     def frequencia(self, variavel:str, tab: pd.DataFrame=None) -> pd.DataFrame:
         tab = tab if type(tab) == pd.DataFrame else self.tab.copy()
@@ -20,7 +20,7 @@ class TabelaPb():
         tabela_freq = self.frequencia(variavel)
         total = tabela_freq['Frequência n_i'].sum()
         tabela_freq['Proporção f_i'] = tabela_freq['Frequência n_i'] / total
-        return tabela_freq.copy()
+        return tabela_freq
     
     def frequencia_variavel_continua(self, variavel:str, amplitude:int) -> pd.DataFrame:
         tab = self.tab.copy()
@@ -39,13 +39,7 @@ class TabelaPb():
         return self.frequencia(classes, tab)
     
 class Tabela(TabelaPb):
-    def __init__(self, tab: pd.DataFrame) -> None:
-        super().__init__(tab)
-
-class Teste(pd):
-    def __init__(self) -> None:
-        # a alteração do __init__ tem que vim antes do super().__init__() ou depois
-        super().__init__()
-
-    def teste(self, dados: dict) -> dict:
-        return dados
+    def __init__(self, *args, **kwargs) -> None:
+        super().__init__(*args, **kwargs)
+        if 'N' in self.tab.columns:
+            self.tab.drop('N', axis=1, inplace=True)

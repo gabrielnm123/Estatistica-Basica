@@ -2,9 +2,12 @@ import pandas as pd
 from math import floor
 
 class TabelaPb():
-    def __init__(self, type: int, *args, **kwargs) -> None:
-        if type == 1:
-            self.tab = pd.read_excel(*args, **kwargs)
+    def __init__(self, *args, type: int=0, sort_values_by_variavel: str=None, sort_values_ascending: bool=True, **kwargs) -> None:
+        if type == 0:
+            if sort_values_by_variavel:
+                self.tab = pd.read_excel(*args, **kwargs).sort_values(by=sort_values_by_variavel, ascending=sort_values_ascending)
+            else:
+                self.tab = pd.read_excel(*args, **kwargs)
         else:
             self.tab = None    
         if 'Anos' in self.tab.columns and 'Meses' in self.tab.columns:
@@ -12,18 +15,18 @@ class TabelaPb():
             self.tab = self.tab.round({'Idade': 2})
             self.tab.drop(['Anos', 'Meses'], axis=1, inplace=True)
 
-    def frequencia(self, variavel:str, tab: pd.DataFrame=None) -> pd.DataFrame:
-        tab = tab if type(tab) == pd.DataFrame else self.tab.copy()
-        return pd.DataFrame(tab[variavel].value_counts()).reset_index().rename(columns={'count': 'Frequência n_i'})
+    def frequencia(self, variavel:str, tab: pd.DataFrame=None, sort_values_by_variavel: str=None, sort_values_ascending: bool = True) -> pd.DataFrame:
+        tab = tab.sort_values(by=variavel if sort_values_by_variavel == None else sort_values_by_variavel, ascending=sort_values_ascending) if type(tab) == pd.DataFrame else self.tab.sort_values(by=variavel if sort_values_by_variavel == None else sort_values_by_variavel, ascending=sort_values_ascending)
+        return pd.DataFrame(tab[variavel].value_counts(sort=False)).reset_index().rename(columns={'count': 'Frequência n_i'})
 
-    def frequencia_proporcao(self, variavel:str) -> pd.DataFrame:
-        tabela_freq = self.frequencia(variavel)
+    def frequencia_proporcao(self, *args, **kwargs) -> pd.DataFrame:
+        tabela_freq = self.frequencia(*args, **kwargs)
         total = tabela_freq['Frequência n_i'].sum()
         tabela_freq['Proporção f_i'] = tabela_freq['Frequência n_i'] / total
         return tabela_freq
     
-    def frequencia_variavel_continua(self, variavel:str, amplitude:int) -> pd.DataFrame:
-        tab = self.tab.copy()
+    def frequencia_variavel_continua(self, variavel:str, amplitude:int, tab: pd.DataFrame=None, *args, **kwargs) -> pd.DataFrame:
+        tab = tab.copy() if type(tab) == pd.DataFrame else self.tab.copy()
         variavel_dados = tab[variavel].to_list()
         variavel_dados.sort()
         variavel_min = floor(variavel_dados[0])
@@ -36,7 +39,7 @@ class TabelaPb():
                     tab.loc[tab[variavel] == valor, classes] = classe
             variavel_min = variavel_max
             variavel_max += amplitude
-        return self.frequencia(classes, tab)
+        return self.frequencia(classes, tab, variavel, *args, **kwargs)
     
 class Tabela(TabelaPb):
     def __init__(self, *args, **kwargs) -> None:

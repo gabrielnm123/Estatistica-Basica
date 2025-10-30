@@ -18,13 +18,12 @@ class TabelaPb():
 
     def frequencia(self, variavel:str, tab: pd.DataFrame=None, sort_values_by_variavel: str=None, sort_values_ascending: bool = True) -> pd.DataFrame:
         tab = tab.sort_values(by=variavel if sort_values_by_variavel == None else sort_values_by_variavel, ascending=sort_values_ascending) if type(tab) == pd.DataFrame else self.tab.sort_values(by=variavel if sort_values_by_variavel == None else sort_values_by_variavel, ascending=sort_values_ascending)
-        return pd.DataFrame(tab[variavel].value_counts(sort=False)).reset_index().rename(columns={'count': 'Frequência n_i'})
+        return pd.DataFrame(tab[variavel].value_counts(sort=False)).reset_index().rename(columns={'count': 'Frequência n_i'}).astype(object)
 
     def frequencia_proporcao(self, *args, **kwargs) -> pd.DataFrame:
-        tabela_freq = self.frequencia(*args, **kwargs)
-        total = tabela_freq['Frequência n_i'].sum()
-        tabela_freq['Proporção f_i'] = tabela_freq['Frequência n_i'] / total
-        return tabela_freq
+        tab = self.frequencia(*args, **kwargs)
+        tab['Proporção f_i'] = tab['Frequência n_i'] / tab['Frequência n_i'].sum()
+        return tab
     
     def frequencia_variavel_continua(self, variavel:str, amplitude:int, tab: pd.DataFrame=None, *args, **kwargs) -> pd.DataFrame:
         tab = tab.copy() if type(tab) == pd.DataFrame else self.tab.copy()
@@ -47,3 +46,19 @@ class Tabela(TabelaPb):
         super().__init__(*args, **kwargs)
         if 'N' in self.tab.columns:
             self.tab.drop('N', axis=1, inplace=True)
+
+    def _frequencia(self, *args, **kwargs) -> pd.DataFrame:
+        tab = super().frequencia(*args, **kwargs)
+        tab['Porcentagem 100 f_i'] = (tab['Frequência n_i'] / tab['Frequência n_i'].sum()) * 100
+        return tab
+
+    def frequencia(self, *args, **kwargs) -> pd.DataFrame:
+        tab = self._frequencia(*args, **kwargs)
+        tab.loc[len(tab)] = ['Total' if index == 0 else round(tab[tab.columns[index]].sum()) for index in range(len(tab.columns))]
+        return tab
+
+    def frequencia_proporcao(self, *args, **kwargs) -> pd.DataFrame:
+        tab = self._frequencia(*args, **kwargs)
+        tab['Proporção f_i'] = tab['Frequência n_i'] / tab['Frequência n_i'].sum()
+        tab.loc[len(tab)] = ['Total' if index == 0 else round(tab[tab.columns[index]].sum()) for index in range(len(tab.columns))]
+        return tab

@@ -11,9 +11,10 @@ class TabelaPb():
         else:
             self.tab = None    
         if 'Anos' in self.tab.columns and 'Meses' in self.tab.columns:
-            self.tab['Idade'] = self.tab['Anos'] + self.tab['Meses'] / 12
+            self.tab.rename(columns={'Anos': 'Idade'}, inplace=True)
+            self.tab['Idade'] = self.tab['Idade'] + self.tab['Meses'] / 12
             self.tab = self.tab.round({'Idade': 2})
-            self.tab.drop(['Anos', 'Meses'], axis=1, inplace=True)
+            self.tab.drop('Meses', axis=1, inplace=True)
 
     def frequencia(self, variavel:str, tab: pd.DataFrame=None, sort_values_by_variavel: str=None, sort_values_ascending: bool = True) -> pd.DataFrame:
         tab = tab.sort_values(by=variavel if sort_values_by_variavel == None else sort_values_by_variavel, ascending=sort_values_ascending) if type(tab) == pd.DataFrame else self.tab.sort_values(by=variavel if sort_values_by_variavel == None else sort_values_by_variavel, ascending=sort_values_ascending)

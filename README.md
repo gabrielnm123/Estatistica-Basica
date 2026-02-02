@@ -642,4 +642,4 @@ Escalas de medidas: A seguir descrevemos outros possíveis critérios para class
 
 **Para cada uma das variaveis abaixo, indique a escala usualmente adotada para resumir os dados em tabelas de frequencia:**
 
-a) Salários dos empregados de uma indústria: escala Razão
+a) Salários dos empregados de uma indústria: Escala Razão

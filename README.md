@@ -628,18 +628,35 @@ Tabela 2.2 Frequencias e porcentagens dos 36 empregados da seção de orçamento
 
 #### Problemas
 
-Escalas de medidas: A seguir descrevemos outros possíveis critérios para classificar variáveis, em função da escala adotada. Observe a similaridade com a classificação apresentada anteriormente. Nossas observações são resultados de medidas feitas sobre os elementos de uma população. Existem quatro escalas de medidas que podem ser consideradas.
+1. Escalas de medidas: A seguir descrevemos outros possíveis critérios para classificar variáveis, em função da escala adotada. Observe a similaridade com a classificação apresentada anteriormente. Nossas observações são resultados de medidas feitas sobre os elementos de uma população. Existem quatro escalas de medidas que podem ser consideradas.
 
-![alt text](image-1.png)
+    ![alt text](image-1.png)
 
-1. **Escala Nominal**: Nesta escala somente podemos afirmar se uma medida é diferente ou não da outra, e ela é usada para categorizar indivíduos de uma população. Um exemplo é o sexo de um indivíduo. Para cada categoria associamos um numeral diferente (letra ou número). Por exemplo, no caso do sexo, podemos associar as letras M (masculino) e F (feminino) ou 1 (masculino) e 2 (feminino). Não podemos realizar operações aritméticas aqui e uma medida de posição apropriada é a moda. (As medidas citadas nesses problemas, como a média, mediana e moda, são definidas no próximo capítulo).
+    1. **Escala Nominal**: Nesta escala somente podemos afirmar se uma medida é diferente ou não da outra, e ela é usada para categorizar indivíduos de uma população. Um exemplo é o sexo de um indivíduo. Para cada categoria associamos um numeral diferente (letra ou número). Por exemplo, no caso do sexo, podemos associar as letras M (masculino) e F (feminino) ou 1 (masculino) e 2 (feminino). Não podemos realizar operações aritméticas aqui e uma medida de posição apropriada é a moda. (As medidas citadas nesses problemas, como a média, mediana e moda, são definidas no próximo capítulo).
 
-2. **Escala Ordinal**: Aqui, podemos dizer que uma medida é diferente e maior do que outra. Temos a situação anterior, mas as categorias são ordenadas, e a ordem dos numerais associados ordena as categorias. Por exemplo, a classe socioeconômica de um indivíduo pode ser baixa (1 ou x), média (2 ou y) e alta (3 ou z). Transformações que preservam a ordem não alteram a estrutura de uma escala ordinal. No exemplo acima, podemos representar as categorias por 1, 10 e 100 ou A, L e Z. Medidas de posição apropriadas são a mediana e a moda.
+    2. **Escala Ordinal**: Aqui, podemos dizer que uma medida é diferente e maior do que outra. Temos a situação anterior, mas as categorias são ordenadas, e a ordem dos numerais associados ordena as categorias. Por exemplo, a classe socioeconômica de um indivíduo pode ser baixa (1 ou x), média (2 ou y) e alta (3 ou z). Transformações que preservam a ordem não alteram a estrutura de uma escala ordinal. No exemplo acima, podemos representar as categorias por 1, 10 e 100 ou A, L e Z. Medidas de posição apropriadas são a mediana e a moda.
 
-3. **Escala Intervalar**: Nesta escala, podemos afirmar que uma medida é igual ou diferente, maior e quanto maior do que outra. Podemos quantificar a diferença entre as categorias da escala ordinal. Necessitamos de uma origem arbitrária e de uma unidade de medida. Por exemplo, considere a temperatura de um indivíduo, na escala Fahrenheit. A origem é 0º F e a unidade é 1º F. Transformações que preservam a estrutura dessa escala são do tipo y = ax+b, a > 0. Por exemplo, a transformação y = 5/9 (x - 32) transforma graus Fahrenheit em centígrados. Para essa escala, podemos fazer operações aritméticas, assim média, mediana e moda são medidas de posição apropriadas.
+    3. **Escala Intervalar**: Nesta escala, podemos afirmar que uma medida é igual ou diferente, maior e quanto maior do que outra. Podemos quantificar a diferença entre as categorias da escala ordinal. Necessitamos de uma origem arbitrária e de uma unidade de medida. Por exemplo, considere a temperatura de um indivíduo, na escala Fahrenheit. A origem é 0º F e a unidade é 1º F. Transformações que preservam a estrutura dessa escala são do tipo y = ax+b, a > 0. Por exemplo, a transformação y = 5/9 (x - 32) transforma graus Fahrenheit em centígrados. Para essa escala, podemos fazer operações aritméticas, assim média, mediana e moda são medidas de posição apropriadas.
 
-4. **Escala Razão**: Dadas duas medidas nessa escala, podemos dizer se são iguais, ou se uma é diferente, maior, quanto maior e quantas vezes a outra. A diferença com a escala intervalar é que agora existe um zero absoluto. A altura de um indivíduo é um exemplo de medida nessa escala. Se ela for medida em centímetros (cm), 0 cm é a origem e 1 cm é a unidade de medida. Um indivíduo com 190 cm é duas vezes mais alto do que um indivíduo com 95 cm, e esta relação continua a valer se usarmos 1 m como unidade. Ou seja, a estrutura da escala razão não é alterada por transformações da forma y = cx, c > 0. Por exemplo, y = x/100 transforma cm em m. As estatísticas apropriadas para a escala intervalar são também apropriadas para escala razão.
+    4. **Escala Razão**: Dadas duas medidas nessa escala, podemos dizer se são iguais, ou se uma é diferente, maior, quanto maior e quantas vezes a outra. A diferença com a escala intervalar é que agora existe um zero absoluto. A altura de um indivíduo é um exemplo de medida nessa escala. Se ela for medida em centímetros (cm), 0 cm é a origem e 1 cm é a unidade de medida. Um indivíduo com 190 cm é duas vezes mais alto do que um indivíduo com 95 cm, e esta relação continua a valer se usarmos 1 m como unidade. Ou seja, a estrutura da escala razão não é alterada por transformações da forma y = cx, c > 0. Por exemplo, y = x/100 transforma cm em m. As estatísticas apropriadas para a escala intervalar são também apropriadas para escala razão.
 
-**Para cada uma das variaveis abaixo, indique a escala usualmente adotada para resumir os dados em tabelas de frequencia:**
+    **Para cada uma das variaveis abaixo, indique a escala usualmente adotada para resumir os dados em tabelas de frequencia:**
 
-a) Salários dos empregados de uma indústria: Escala Razão
+    (a) Salários dos empregados de uma indústria: Escala Razão<br>
+    (b) Opinião de consumidores sobre determinado produto: Escala Ordinal<br>
+    (c) Número de respostas certas de alunos num teste com dez itens: Escala Razão<br>
+    (d) Temperatura diária da cidade de Manaus: Escala Intervalar<br>
+    (e) Porcentagem da receita de municípios aplicada em educação: Escala Razão<br>
+    (f) Opinião dos empregados da Companhia MB sobre a realização ou não de cursos obrigatórios de treinamento: Escala Ordinal<br>
+    (g) QI de um indivíduo: Escala Razão. Correção: Escala Intervalar, pois não tem um zero absoluto, ninguem tem nenhuma inteligencia, mesmo tendo QI 0<br>
+
+2. Usando os dados da Tabela 2.1, construa a distribuição de frequências das variáveis: 
+
+    (a) Estado civil.<br> 
+    (b) Região de procedência.<br> 
+    (c) Número de filhos dos empregados casados.<br> 
+    (d) Idade. 
+
+3. Para o Conjunto de Dados 1 (CD-Brasil), construa a distribuição de frequências para as variáveis população e densidade populacional.
+
+PEDRO ALBERTO MORETTIN. EstatÍstica Básica (Pedro Alberto Morettin, Wilton Oliveira Bussab) (Z-Library) (Locais do Kindle 1169-1178). Edição do Kindle. 
